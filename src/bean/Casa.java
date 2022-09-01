@@ -4,13 +4,13 @@ public class Casa {
 	// values
 	private int numero;
 	private String nomeProp;
-	private int numeroCond;
+	private String nomeCond;
 	
 	// constructors
-	public Casa(int numero, String nomeProp, int numeroCond) {
+	public Casa(int numero, String nomeProp, String nomeCond) {
 		this.numero = numero;
 		this.nomeProp = nomeProp;
-		this.numeroCond = numeroCond;
+		this.nomeCond = nomeCond;
 	}
 	
 	public Casa() {
@@ -34,16 +34,16 @@ public class Casa {
 		this.nomeProp = nomeProp;
 	}
 
-	public int getNumeroCond() {
-		return numeroCond;
+	public String getNomeCond() {
+		return nomeCond;
 	}
 
-	public void setNumeroCond(int numeroCond) {
-		this.numeroCond = numeroCond;
+	public void setNomeCond(String nomeCond) {
+		this.nomeCond = nomeCond;
 	}
 
 	@Override
 	public String toString() {
-		return "Casa [numero=" + numero + ", nomeProp=" + nomeProp + ", numeroCond=" + numeroCond + "]";
+		return "Casa [numero=" + numero + ", nomeProp=" + nomeProp + ", nomeCond=" + nomeCond + "]";
 	}
 }

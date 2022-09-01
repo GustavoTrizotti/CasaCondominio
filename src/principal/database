@@ -1,0 +1,7 @@
+create database condcasadb;
+use condcasadb;
+create table Condominio (nome varchar(255), qtdCasas integer, 
+cidade varchar(255), primary key(nome));
+create table Casa (numero integer, nomeProp varchar(255),
+nomeCond varchar(255), primary key (numero), foreign key (nomeCond)
+references Condominio (nome));

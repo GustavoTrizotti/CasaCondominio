@@ -8,7 +8,7 @@ public class FabricaConexoes {
 	public Connection getConnection() {
 		try {
 			return (Connection)
-			DriverManager.getConnection("jdbc:mysql://localhost/condcasadb?useSSL=false", "root", "root");
+			DriverManager.getConnection("jdbc:mysql://localhost/condcasadb?useSSL=false", "root", "");
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}

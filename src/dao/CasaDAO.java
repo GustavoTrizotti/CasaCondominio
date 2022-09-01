@@ -17,13 +17,13 @@ public class CasaDAO {
 	
 	public int Inserir(Casa c) {
 		int inseriu = 0;
-		String sql = "INSERT INTO Casa (numero, nomeProp, numeroCond) VALUES (?, ?, ?);";
+		String sql = "INSERT INTO Casa (numero, nomeProp, nomeCond) VALUES (?, ?, ?);";
 		PreparedStatement stmt;
 		try {
 			stmt = (PreparedStatement) connection.prepareStatement(sql);
 			stmt.setInt(1, c.getNumero());
 			stmt.setString(2, c.getNomeProp());
-			stmt.setInt(3, c.getNumeroCond());
+			stmt.setString(3, c.getNomeCond());
 			inseriu = stmt.executeUpdate();
 			stmt.close();
 		} catch (SQLException e) {
@@ -44,7 +44,7 @@ public class CasaDAO {
 				c = new Casa();
 				c.setNumero(rs.getInt("numero"));
 				c.setNomeProp(rs.getString("nomeProp"));
-				c.setNumeroCond(rs.getInt("numeroCond"));
+				c.setNomeCond(rs.getString("nomeCond"));
 				casas.add(c);
 			}
 			rs.close();
@@ -54,5 +54,37 @@ public class CasaDAO {
 			e.printStackTrace();
 		}
 		return null;
+	}
+	
+	public int Remover(Casa c) {
+		int removeu = 0;
+		String sql = "DELETE FROM Casa WHERE numero = ?;";
+		PreparedStatement stmt;
+		try {
+			stmt = (PreparedStatement) connection.prepareStatement(sql);
+			stmt.setInt(1, c.getNumero());
+			removeu = stmt.executeUpdate();
+			stmt.close();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return removeu;
+	}
+	
+	public int Alterar(Casa c) {
+		int alterou = 0;
+		String sql = "UPDATE Casa SET nomeProp = ?, nomeCond=? WHERE numero = ?";
+		PreparedStatement stmt;
+		try {
+			stmt = (PreparedStatement) connection.prepareStatement(sql);
+			stmt.setInt(1, c.getNumero());
+			stmt.setString(2, c.getNomeProp());
+			stmt.setString(3, c.getNomeCond());
+			alterou = stmt.executeUpdate();
+			stmt.close();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return alterou;
 	}
 }
